@@ -46,9 +46,9 @@ The default experiment is deterministic and does not use random initialisation.
 
 Let
 
-$$
+```math
 \mathbf{g}_t=\nabla f(\mathbf{w}_{t-1})
-$$
+```
 
 be the gradient evaluated before update $t$, and let $\eta$ denote the learning rate.
 
@@ -56,13 +56,13 @@ be the gradient evaluated before update $t$, and let $\eta$ denote the learning 
 
 Standard gradient descent uses the raw gradient:
 
-$$
+```math
 \mathbf{w}_t
 =
 \mathbf{w}_{t-1}
 -
 \eta\mathbf{g}_t.
-$$
+```
 
 The gradient magnitude therefore controls the update length. This can produce fast movement where the objective is steep and slow progress in flat regions.
 
@@ -70,22 +70,22 @@ The gradient magnitude therefore controls the update length. This can produce fa
 
 The normalised method divides the gradient by its global L2 norm:
 
-$$
+```math
 \mathbf{d}_t
 =
 \frac{\mathbf{g}_t}
 {\max\!\left(\lVert\mathbf{g}_t\rVert_2,\epsilon\right)},
-$$
+```
 
 and updates using
 
-$$
+```math
 \mathbf{w}_t
 =
 \mathbf{w}_{t-1}
 -
 \eta\mathbf{d}_t.
-$$
+```
 
 When the gradient is not close to zero, every update has length approximately $\eta$. This avoids very small steps on flat objectives, but a fixed step length can overshoot or oscillate around a minimum.
 
@@ -95,19 +95,19 @@ This implementation uses one global L2 norm. It is different from independently 
 
 RMSProp maintains an exponential moving average of squared gradients:
 
-$$
+```math
 \mathbf{s}_t
 =
 \rho\mathbf{s}_{t-1}
 +
 (1-\rho)\mathbf{g}_t\odot\mathbf{g}_t,
-$$
+```
 
 where $\odot$ denotes elementwise multiplication.
 
 The update is
 
-$$
+```math
 \mathbf{w}_t
 =
 \mathbf{w}_{t-1}
@@ -115,39 +115,39 @@ $$
 \eta
 \frac{\mathbf{g}_t}
 {\sqrt{\mathbf{s}_t}+\epsilon}.
-$$
+```
 
 Coordinates with consistently large squared gradients receive smaller effective steps. This is useful when the objective has very different curvature in different directions.
 
 The reference run uses
 
-$$
+```math
 \rho=0.9.
-$$
+```
 
 ### Adam
 
 Adam combines exponential moving averages of the gradient and squared gradient:
 
-$$
+```math
 \mathbf{m}_t
 =
 \beta_1\mathbf{m}_{t-1}
 +
 (1-\beta_1)\mathbf{g}_t,
-$$
+```
 
-$$
+```math
 \mathbf{v}_t
 =
 \beta_2\mathbf{v}_{t-1}
 +
 (1-\beta_2)\mathbf{g}_t\odot\mathbf{g}_t.
-$$
+```
 
 Both accumulators start at zero, so the implementation applies the standard bias corrections:
 
-$$
+```math
 \widehat{\mathbf{m}}_t
 =
 \frac{\mathbf{m}_t}{1-\beta_1^t},
@@ -155,11 +155,11 @@ $$
 \widehat{\mathbf{v}}_t
 =
 \frac{\mathbf{v}_t}{1-\beta_2^t}.
-$$
+```
 
 The corrected update is
 
-$$
+```math
 \mathbf{w}_t
 =
 \mathbf{w}_{t-1}
@@ -167,17 +167,17 @@ $$
 \eta
 \frac{\widehat{\mathbf{m}}_t}
 {\sqrt{\widehat{\mathbf{v}}_t}+\epsilon}.
-$$
+```
 
 The reference settings are
 
-$$
+```math
 \beta_1=0.9,
 \qquad
 \beta_2=0.999,
 \qquad
 \epsilon=10^{-8}.
-$$
+```
 
 The first-update unit test specifically verifies that the Adam update is bias corrected.
 
@@ -189,29 +189,29 @@ The suite contains two scalar objectives and two two-dimensional objectives.
 
 The first objective is
 
-$$
+```math
 f(w)=w^4.
-$$
+```
 
 Its gradient is
 
-$$
+```math
 f'(w)=4w^3.
-$$
+```
 
 The global minimiser and minimum are
 
-$$
+```math
 w_\star=0,
 \qquad
 f(w_\star)=0.
-$$
+```
 
 The initial point is
 
-$$
+```math
 w_0=-1.5.
-$$
+```
 
 This objective becomes very flat near zero, so standard gradient descent makes progressively smaller updates.
 
@@ -219,35 +219,35 @@ This objective becomes very flat near zero, so standard gradient descent makes p
 
 The second objective preserves the polynomial used in the original gradient-descent exercise:
 
-$$
+```math
 f(w)
 =
 \frac{w^4+w^2+10w}{50}.
-$$
+```
 
 Its gradient is
 
-$$
+```math
 f'(w)
 =
 \frac{4w^3+2w+10}{50}.
-$$
+```
 
 The numerical minimiser is
 
-$$
+```math
 w_\star
 \approx
 -1.2347728251,
-$$
+```
 
 with
 
-$$
+```math
 f(w_\star)
 \approx
 -0.1699692845.
-$$
+```
 
 The initial point is $w_0=2$.
 
@@ -255,22 +255,22 @@ The initial point is $w_0=2$.
 
 The anisotropic quadratic is
 
-$$
+```math
 f(w_1,w_2)
 =
 \frac12\left(w_1^2+100w_2^2\right).
-$$
+```
 
 Its gradient is
 
-$$
+```math
 \nabla f
 =
 \begin{bmatrix}
 w_1\\
 100w_2
 \end{bmatrix}.
-$$
+```
 
 The factor of 100 creates much steeper curvature in the $w_2$ direction than in the $w_1$ direction. The known minimiser is $(0,0)$ and the starting point is $(-4,3)$.
 
@@ -278,27 +278,27 @@ The factor of 100 creates much steeper curvature in the $w_2$ direction than in 
 
 The Rosenbrock objective is
 
-$$
+```math
 f(w_1,w_2)
 =
 (1-w_1)^2
 +
 100\left(w_2-w_1^2\right)^2.
-$$
+```
 
 Its minimiser is
 
-$$
+```math
 \mathbf{w}_\star=(1,1),
 \qquad
 f(\mathbf{w}_\star)=0.
-$$
+```
 
 The reference run begins at
 
-$$
+```math
 \mathbf{w}_0=(-1.5,1.5).
-$$
+```
 
 The curved valley makes the objective a useful test of whether an optimiser can combine progress along a shallow direction with stability across a steep direction.
 
@@ -308,19 +308,19 @@ The curved valley makes the objective a useful test of whether an optimiser can 
 
 An optimiser is marked as converged when
 
-$$
+```math
 \left\lVert\nabla f(\mathbf{w}_t)\right\rVert_2
 \leq
 10^{-6}.
-$$
+```
 
 If this condition is not reached, the run stops after 5,000 updates and is reported as `maximum_steps`.
 
 The objective gap is calculated as
 
-$$
+```math
 \max\!\left(f(\mathbf{w}_t)-f(\mathbf{w}_\star),0\right).
-$$
+```
 
 The zero clamp prevents insignificant negative round-off values when a computed result is numerically indistinguishable from the known minimum.
 
@@ -399,9 +399,9 @@ RMSProp finishes with a smaller objective gap than standard or normalised gradie
 
 The convergence figure plots
 
-$$
+```math
 f(\mathbf{w}_t)-f(\mathbf{w}_\star)
-$$
+```
 
 on a logarithmic scale for every objective and optimiser.
 
