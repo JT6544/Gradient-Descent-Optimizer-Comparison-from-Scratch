@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "experiment": {
+    "max_steps": 5000,
+    "gradient_tolerance": 1e-06,
+    "deterministic": true,
+    "adam_bias_correction": true,
+    "rmsprop_rho": 0.9,
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.999,
+    "epsilon": 1e-08
+  },
+  "objectives": [
+    {
+      "key": "quartic",
+      "name": "Quartic",
+      "dimension": 1,
+      "initial_point": [
+        -1.5
+      ],
+      "known_minimizer": [
+        0.0
+      ],
+      "known_minimum": 0.0
+    },
+    {
+      "key": "tilted_quartic",
+      "name": "Tilted quartic",
+      "dimension": 1,
+      "initial_point": [
+        2.0
+      ],
+      "known_minimizer": [
+        -1.234772825053297
+      ],
+      "known_minimum": -0.16996928446309353
+    },
+    {
+      "key": "ill_conditioned_quadratic",
+      "name": "Ill-conditioned quadratic",
+      "dimension": 2,
+      "initial_point": [
+        -4.0,
+        3.0
+      ],
+      "known_minimizer": [
+        0.0,
+        0.0
+      ],
+      "known_minimum": 0.0
+    },
+    {
+      "key": "rosenbrock",
+      "name": "Rosenbrock",
+      "dimension": 2,
+      "initial_point": [
+        -1.5,
+        1.5
+      ],
+      "known_minimizer": [
+        1.0,
+        1.0
+      ],
+      "known_minimum": 0.0
+    }
+  ],
+  "learning_rates": {
+    "quartic": {
+      "gradient_descent": 0.01,
+      "normalized_gradient_descent": 0.01,
+      "rmsprop": 0.01,
+      "adam": 0.1
+    },
+    "tilted_quartic": {
+      "gradient_descent": 1.0,
+      "normalized_gradient_descent": 0.01,
+      "rmsprop": 0.02,
+      "adam": 0.05
+    },
+    "ill_conditioned_quadratic": {
+      "gradient_descent": 0.01,
+      "normalized_gradient_descent": 0.05,
+      "rmsprop": 0.05,
+      "adam": 0.1
+    },
+    "rosenbrock": {
+      "gradient_descent": 0.001,
+      "normalized_gradient_descent": 0.001,
+      "rmsprop": 0.001,
+      "adam": 0.03
+    }
+  },
+  "results": [
+    {
+      "objective": "quartic",
+      "objective_name": "Quartic",
+      "dimension": 1,
+      "optimizer": "gradient_descent",
+      "learning_rate": 0.01,
+      "steps_run": 5000,
+      "converged": false,
+      "converged_step": null,
+      "stop_reason": "maximum_steps",
+      "initial_value": 5.0625,
+      "final_value": 6.223282397793211e-06,
+      "objective_gap": 6.223282397793211e-06,
+      "final_gradient_norm": 0.0004983960857418458,
+      "distance_to_minimizer": 0.04994647892171998,
+      "final_point": [
+        -0.04994647892171998
+      ]
+    },
+    {
+      "objective": "quartic",
+      "objective_name": "Quartic",
+      "dimension": 1,
+      "optimizer": "normalized_gradient_descent",
+      "learning_rate": 0.01,
+      "steps_run": 150,
+      "converged": true,
+      "converged_step": 150,
+      "stop_reason": "gradient_tolerance",
+      "initial_value": 5.0625,
+      "final_value": 2.0526617341693363e-60,
+      "objective_gap": 2.0526617341693363e-60,
+      "final_gradient_norm": 6.859587985528727e-45,
+      "distance_to_minimizer": 1.1969591984239969e-15,
+      "final_point": [
+        1.1969591984239969e-15
+      ]
+    },
+    {
+      "objective": "quartic",
+      "objective_name": "Quartic",
+      "dimension": 1,
+      "optimizer": "rmsprop",
+      "learning_rate": 0.01,
+      "steps_run": 318,
+      "converged": true,
+      "converged_step": 318,
+      "stop_reason": "gradient_tolerance",
+      "initial_value": 5.0625,
+      "final_value": 1.561004493259667e-09,
+      "objective_gap": 1.561004493259667e-09,
+      "final_gradient_norm": 9.933747259081449e-07,
+      "distance_to_minimizer": 0.0062856622080155865,
+      "final_point": [
+        -0.0062856622080155865
+      ]
+    },
+    {
+      "objective": "quartic",
+      "objective_name": "Quartic",
+      "dimension": 1,
+      "optimizer": "adam",
+      "learning_rate": 0.1,
+      "steps_run": 31,
+      "converged": true,
+      "converged_step": 31,
+      "stop_reason": "gradient_tolerance",
+      "initial_value": 5.0625,
+      "final_value": 5.21191491257245e-11,
+      "objective_gap": 5.21191491257245e-11,
+      "final_gradient_norm": 7.759039790866945e-08,
+      "distance_to_minimizer": 0.002686886549393558,
+      "final_point": [
+        0.002686886549393558
+      ]
+    },
+    {
+      "objective": "tilted_quartic",
+      "objective_name": "Tilted quartic",
+      "dimension": 1,
+      "optimizer": "gradient_descent",
+      "learning_rate": 1.0,
+      "steps_run": 34,
+      "converged": true,
+      "converged_step": 34,
+      "stop_reason": "gradient_tolerance",
+      "initial_value": 0.8,
+      "final_value": -0.1699692844619493,
+      "objective_gap": 1.144223604754302e-12,
+      "final_gradient_norm": 9.638021040814238e-07,
+      "distance_to_minimizer": 2.3743726216274297e-06,
+      "final_point": [
+        -1.2347704506806754
+      ]
+    },
+    {
+      "objective": "tilted_quartic",
+      "objective_name": "Tilted quartic",
+      "dimension": 1,
+      "optimizer": "normalized_gradient_descent",
+      "learning_rate": 0.01,
+      "steps_run": 5000,
+      "converged": false,
+      "converged_step": null,
+      "stop_reason": "maximum_steps",
+      "initial_value": 0.8,
+      "final_value": -0.1699637248,
+      "objective_gap": 5.559663093540612e-06,
+      "final_gradient_norm": 0.002129920000000993,
+      "distance_to_minimizer": 0.005227174946705437,
+      "final_point": [
+        -1.2400000000000024
+      ]
+    },
+    {
+      "objective": "tilted_quartic",
+      "objective_name": "Tilted quartic",
+      "dimension": 1,
+      "optimizer": "rmsprop",
+      "learning_rate": 0.02,
+      "steps_run": 205,
+      "converged": true,
+      "converged_step": 205,
+      "stop_reason": "gradient_tolerance",
+      "initial_value": 0.8,
+      "final_value": -0.1699692844627475,
+      "objective_gap": 3.4602876120004566e-13,
+      "final_gradient_norm": 5.300339645941676e-07,
+      "distance_to_minimizer": 1.3057630263713094e-06,
+      "final_point": [
+        -1.2347715192902706
+      ]
+    },
+    {
+      "objective": "tilted_quartic",
+      "objective_name": "Tilted quartic",
+      "dimension": 1,
+      "optimizer": "adam",
+      "learning_rate": 0.05,
+      "steps_run": 266,
+      "converged": true,
+      "converged_step": 266,
+      "stop_reason": "gradient_tolerance",
+      "initial_value": 0.8,
+      "final_value": -0.16996928446195106,
+      "objective_gap": 1.1424750034905173e-12,
+      "final_gradient_norm": 9.630715082664665e-07,
+      "distance_to_minimizer": 2.3725727607004643e-06,
+      "final_point": [
+        -1.2347704524805363
+      ]
+    },
+    {
+      "objective": "ill_conditioned_quadratic",
+      "objective_name": "Ill-conditioned quadratic",
+      "dimension": 2,
+      "optimizer": "gradient_descent",
+      "learning_rate": 0.01,
+      "steps_run": 1513,
+      "converged": true,
+      "converged_step": 1513,
+      "stop_reason": "gradient_tolerance",
+      "initial_value": 458.0,
+      "final_value": 4.956656684461162e-13,
+      "objective_gap": 4.956656684461162e-13,
+      "final_gradient_norm": 9.9565623429587e-07,
+      "distance_to_minimizer": 9.9565623429587e-07,
+      "final_point": [
+        -9.9565623429587e-07,
+        0.0
+      ]
+    },
+    {
+      "objective": "ill_conditioned_quadratic",
+      "objective_name": "Ill-conditioned quadratic",
+      "dimension": 2,
+      "optimizer": "normalized_gradient_descent",
+      "learning_rate": 0.05,
+      "steps_run": 5000,
+      "converged": false,
+      "converged_step": null,
+      "stop_reason": "maximum_steps",
+      "initial_value": 458.0,
+      "final_value": 0.031250185187519514,
+      "objective_gap": 0.031250185187519514,
+      "final_gradient_norm": 2.5000074074898064,
+      "distance_to_minimizer": 0.025000074074898064,
+      "final_point": [
+        -1.4993756558100924e-43,
+        0.025000074074898064
+      ]
+    },
+    {
+      "objective": "ill_conditioned_quadratic",
+      "objective_name": "Ill-conditioned quadratic",
+      "dimension": 2,
+      "optimizer": "rmsprop",
+      "learning_rate": 0.05,
+      "steps_run": 125,
+      "converged": true,
+      "converged_step": 125,
+      "stop_reason": "gradient_tolerance",
+      "initial_value": 458.0,
+      "final_value": 8.139214892628713e-14,
+      "objective_gap": 8.139214892628713e-14,
+      "final_gradient_norm": 4.0346536140364546e-07,
+      "distance_to_minimizer": 4.0346536140364546e-07,
+      "final_point": [
+        -4.0346536140364546e-07,
+        -3.1152720252680403e-21
+      ]
+    },
+    {
+      "objective": "ill_conditioned_quadratic",
+      "objective_name": "Ill-conditioned quadratic",
+      "dimension": 2,
+      "optimizer": "adam",
+      "learning_rate": 0.1,
+      "steps_run": 330,
+      "converged": true,
+      "converged_step": 330,
+      "stop_reason": "gradient_tolerance",
+      "initial_value": 458.0,
+      "final_value": 8.987216678810719e-15,
+      "objective_gap": 8.987216678810719e-15,
+      "final_gradient_norm": 2.1948683983216914e-07,
+      "distance_to_minimizer": 1.3293770331475766e-07,
+      "final_point": [
+        -1.3292622936637425e-07,
+        -1.7465706514753514e-09
+      ]
+    },
+    {
+      "objective": "rosenbrock",
+      "objective_name": "Rosenbrock",
+      "dimension": 2,
+      "optimizer": "gradient_descent",
+      "learning_rate": 0.001,
+      "steps_run": 5000,
+      "converged": false,
+      "converged_step": null,
+      "stop_reason": "maximum_steps",
+      "initial_value": 62.5,
+      "final_value": 0.004950957488496033,
+      "objective_gap": 0.004950957488496033,
+      "final_gradient_norm": 0.0665975517481624,
+      "distance_to_minimizer": 0.1530556750578294,
+      "final_point": [
+        0.9296981655323309,
+        0.8640452584942757
+      ]
+    },
+    {
+      "objective": "rosenbrock",
+      "objective_name": "Rosenbrock",
+      "dimension": 2,
+      "optimizer": "normalized_gradient_descent",
+      "learning_rate": 0.001,
+      "steps_run": 5000,
+      "converged": false,
+      "converged_step": null,
+      "stop_reason": "maximum_steps",
+      "initial_value": 62.5,
+      "final_value": 0.0015319585942475825,
+      "objective_gap": 0.0015319585942475825,
+      "final_gradient_norm": 0.4713100613872201,
+      "distance_to_minimizer": 0.08291971359370723,
+      "final_point": [
+        0.9628594442716497,
+        0.9258632478277357
+      ]
+    },
+    {
+      "objective": "rosenbrock",
+      "objective_name": "Rosenbrock",
+      "dimension": 2,
+      "optimizer": "rmsprop",
+      "learning_rate": 0.001,
+      "steps_run": 5000,
+      "converged": false,
+      "converged_step": null,
+      "stop_reason": "maximum_steps",
+      "initial_value": 62.5,
+      "final_value": 0.0005647827246675404,
+      "objective_gap": 0.0005647827246675404,
+      "final_gradient_norm": 0.6482064620256686,
+      "distance_to_minimizer": 0.04150316934886048,
+      "final_point": [
+        0.9819274727302585,
+        0.9626382973610056
+      ]
+    },
+    {
+      "objective": "rosenbrock",
+      "objective_name": "Rosenbrock",
+      "dimension": 2,
+      "optimizer": "adam",
+      "learning_rate": 0.03,
+      "steps_run": 4276,
+      "converged": true,
+      "converged_step": 4276,
+      "stop_reason": "gradient_tolerance",
+      "initial_value": 62.5,
+      "final_value": 9.69534758001285e-13,
+      "objective_gap": 9.69534758001285e-13,
+      "final_gradient_norm": 9.95697586128759e-07,
+      "distance_to_minimizer": 2.2033807634715277e-06,
+      "final_point": [
+        0.9999990157765767,
+        0.9999980286575534
+      ]
+    }
+  ]
+}
